@@ -50,10 +50,10 @@ ARG VCS_URL
 ENV PHP_INI_DIR=/usr/local/etc/php
 
 # We'll need the php binary...
-COPY --from=libs /usr/local/bin/php /bin/
+COPY --from=build /usr/local/bin/php /bin/
 
 # ...as well as required shared libraries
-COPY --from=libs /lib/ld-musl-x86_64.so.1 /lib/
+COPY --from=build /lib/ld-musl-x86_64.so.1 /lib/
 
 ENTRYPOINT ["php"]
 CMD ["-v"]
